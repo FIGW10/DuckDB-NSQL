@@ -10,6 +10,8 @@ COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN python -c "import pydantic; import langchain; import structlog; print('Successfully imported pydantic, langchain, and structlog')"
+
 # Copy the rest of the application's code into the container at /app
 COPY . .
 
