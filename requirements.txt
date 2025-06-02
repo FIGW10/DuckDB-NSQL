@@ -21,7 +21,6 @@ cloudpathlib==0.21.1
 peft==0.15.2
 packaging==25.0
 ninja==1.11.1.4
-flash-attn==2.7.4.post1
 langchain
 pydantic>2
 torch
