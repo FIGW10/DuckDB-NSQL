@@ -1,3 +1,5 @@
+setuptools>=65.5.0
+wheel>=0.38.0
 manifest-ml[all]==0.1.9
 pandas>=2.0.0
 sqlalchemy<2.0.0
