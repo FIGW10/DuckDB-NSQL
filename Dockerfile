@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy the requirements file into the container at /app
 COPY requirements.txt .
 
+RUN apt-get update && apt-get install -y build-essential cmake git && rm -rf /var/lib/apt/lists/*
+
+ENV CMAKE_ARGS="-DLLAMA_CUBLAS=OFF -DLLAMA_HIPBLAS=OFF -DLLAMA_CLBLAST=OFF"
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -17,4 +21,5 @@ COPY . .
 # For example, if you have a main script: CMD ["python", "your_main_script.py"]
 # Or for a library project, you might not need a CMD or ENTRYPOINT,
 # or you might set up a command that runs tests or a demo.
-# For now, let's leave it commented out or omit it if not immediately clear.
+
+CMD ["python", "main.py"]

@@ -4,6 +4,7 @@ from typing import Any
 import subprocess
 from wurlitzer import pipes
 from duckdb import DuckDBPyConnection
+import os
 
 PROMPT_TEMPLATE = """### Instruction:\n{instruction}\n\n### Input:\n{input}\n### Question:\n{question}\n\n### Response (use duckdb shorthand if possible):\n"""
 INSTRUCTION_TEMPLATE = """Your task is to generate valid duckdb SQL to answer the following question{has_schema}"""  # noqa: E501
@@ -83,10 +84,12 @@ def generate_sql(
 
 
 def validate_sql(query, schema):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    validator_path = os.path.join(script_dir, 'validate_sql.py')
     try:
         # Define subprocess
         process = subprocess.Popen(
-            [sys.executable, './validate_sql.py', query, schema],
+            [sys.executable, validator_path, query, schema],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE
         )
