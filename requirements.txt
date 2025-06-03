@@ -26,3 +26,6 @@ ninja==1.11.1.4
 langchain
 pydantic>2
 torch
+wurlitzer
+llama-cpp-python
+requests
