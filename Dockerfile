@@ -17,4 +17,5 @@ COPY . .
 # For example, if you have a main script: CMD ["python", "your_main_script.py"]
 # Or for a library project, you might not need a CMD or ENTRYPOINT,
 # or you might set up a command that runs tests or a demo.
-# For now, let's leave it commented out or omit it if not immediately clear.
+
+CMD ["python", "main.py"]
